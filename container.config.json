@@ -1,0 +1,31 @@
+{
+  "version": "2.0",
+  "envId": "{{env.ENV_ID}}",
+  "framework": {
+    "name": "halo",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-container",
+        "inputs": {
+          "cpu": 1,
+          "mem": 1,
+          "serviceName": "halo",
+          "servicePath": "/",
+          "uploadType": "package",
+          "containerPort": 8090,
+          "volumeMounts": {
+            "/opt/.halo": "halo-cfs"
+          }
+        }
+      }
+    },
+    "requirement": {
+      "addons": [
+        {
+          "type": "CFS",
+          "name": "halo-cfs"
+        }
+      ]
+    }
+  }
+}
